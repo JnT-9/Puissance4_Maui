@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Puissance4.Views"
+             xmlns:viewmodels="clr-namespace:Puissance4.ViewModels"
+             x:Class="Puissance4.MainPage"
+             Title="Puissance 4">
+
+    <ContentPage.BindingContext>
+        <viewmodels:GameViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <Label Text="Puissance 4" 
+               Grid.Row="0"
+               HorizontalOptions="Center" 
+               FontSize="32" 
+               FontAttributes="Bold" 
+               Margin="0,20,0,20" />
+
+        <views:GameBoardView Grid.Row="1" 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center" />
+    </Grid>
+
+</ContentPage>

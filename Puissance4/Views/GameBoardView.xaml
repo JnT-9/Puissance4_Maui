@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Puissance4.ViewModels"
+             x:Class="Puissance4.Views.GameBoardView">
+
+    <ContentView.Resources>
+        <Style x:Key="CellStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{Binding CellColor, Mode=OneWay}" />
+            <Setter Property="CornerRadius" Value="25" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="BorderColor" Value="#333333" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="WidthRequest" Value="50" />
+        </Style>
+        
+        <Style x:Key="PlaceTokenButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#FF5555" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="5,0,5,0" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="WidthRequest" Value="50" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+        
+        <Style x:Key="ResetButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#3399FF" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Padding" Value="20,10" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+        
+        <Style x:Key="GameStatusStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,10,0,10" />
+        </Style>
+    </ContentView.Resources>
+
+    <VerticalStackLayout BackgroundColor="#444444" Padding="10" Spacing="15">
+        <!-- Game Status -->
+        <Label Text="{Binding GameStatus}" Style="{StaticResource GameStatusStyle}" />
+        
+        <!-- Game Board -->
+        <CollectionView ItemsSource="{Binding Cells}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceEvenly">
+                        <CollectionView ItemsSource="{Binding .}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Style="{StaticResource CellStyle}" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </FlexLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!-- Buttons for placing tokens -->
+        <Frame BackgroundColor="#333333" Padding="10" CornerRadius="10">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Button Text="↓" Style="{StaticResource PlaceTokenButtonStyle}" Command="{Binding PlaceTokenCommand}" CommandParameter="0" />
+                <Button Text="↓" Style="{StaticResource PlaceTokenButtonStyle}" Command="{Binding PlaceTokenCommand}" CommandParameter="1" />
+                <Button Text="↓" Style="{StaticResource PlaceTokenButtonStyle}" Command="{Binding PlaceTokenCommand}" CommandParameter="2" />
+                <Button Text="↓" Style="{StaticResource PlaceTokenButtonStyle}" Command="{Binding PlaceTokenCommand}" CommandParameter="3" />
+                <Button Text="↓" Style="{StaticResource PlaceTokenButtonStyle}" Command="{Binding PlaceTokenCommand}" CommandParameter="4" />
+                <Button Text="↓" Style="{StaticResource PlaceTokenButtonStyle}" Command="{Binding PlaceTokenCommand}" CommandParameter="5" />
+                <Button Text="↓" Style="{StaticResource PlaceTokenButtonStyle}" Command="{Binding PlaceTokenCommand}" CommandParameter="6" />
+            </HorizontalStackLayout>
+        </Frame>
+        
+        <!-- Reset Button -->
+        <Button Text="New Game" 
+                Style="{StaticResource ResetButtonStyle}" 
+                Command="{Binding ResetGameCommand}" 
+                HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentView> 
