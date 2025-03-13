@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Puissance4")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+7e40010dddeb3788349a6d3798ee80c82c511a2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Puissance4")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Puissance4")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
